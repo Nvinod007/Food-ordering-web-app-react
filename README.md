@@ -21,3 +21,20 @@
 
 # This will work in last 2 version of any browser.
 - inorder to change and make different configuration, make changes in **browserslist** in ""package.json""
+
+# Food ordering APP
+
+- * Header
+- * - Logo
+-  * - Nav Items
+-  * Body
+-  * - Search
+-  * - Restaurant card container
+-  *  - Restuarant card
+-  *   - IMG
+-  *   - Name of res, star rating, cuisine
+-  * Footer
+-  * - Copy right
+-  * - Links
+-  * - Address
+-  * - Contact

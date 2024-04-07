@@ -1,0 +1,2 @@
+export const CDN_URL = 'https://b.zmtcdn.com/data/pictures/9/20983729/85d9095f435204f8b3638c47b9ac7fb0_featured_v2.jpg'
+export const LOGO_URL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZxlgEvhHNQWFBYw-Kron-2C276RfDJgNM4A&s'
