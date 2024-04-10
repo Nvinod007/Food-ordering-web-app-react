@@ -1,10 +1,17 @@
 import { LOGO_URL } from "../utils/constants"
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   // let btnName = 'Log in';
   const [btnName, setBtnName] = useState(true)
+
+  /**
+   * ? we should use<a> tag in react like:
+   * ! < li > <a href="/about">About us </a></ >
+   * * Since it refresh's the whole page
+   */
+
   return (
     <div className='header' >
       <div className='logo-container' >
@@ -12,9 +19,9 @@ const Header = () => {
       </div>
       < div className='nav' >
         <ul>
-          <li>Home </li>
-          <li> About us </li>
-          <li> Contact Us </li>
+          <li><Link to='/'>Home</Link></li>
+          <li> <Link to='/about'>About Us</Link></li>
+          <li> <Link to='/contact'>Contact Us</Link></li>
           <li> Cart </li>
           <button className='login' onClick={() => { setBtnName(!btnName); console.log('btnName', btnName)}}>{btnName?'Log In':'Log Out'}</button>
         </ul>

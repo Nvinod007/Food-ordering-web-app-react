@@ -4,7 +4,7 @@ const Shimmer = () => {
   return (
     <div className='shimmer-container'>
       {noOfCards.map((card, index) => (
-        <div key={index} className='shimmer-card'>Card {card}</div>
+        <div key={index} className='shimmer-card'></div>
       ))}
     </div>)
 }

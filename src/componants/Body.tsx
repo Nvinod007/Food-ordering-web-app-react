@@ -2,34 +2,23 @@ import RestaurantCard from './RestaurantCard';
 import React, { useState, useEffect } from 'react';
 import Shimmer from './shimmer';
 import { SWIGGY_API } from '../utils/constants';
+import { fetchData } from '../utils/dataFetch';
+import { Link } from 'react-router-dom';
 
 const Body = () => {
 
-
   const [restaurant, setRestaurant] = useState([]);
   const [searchText, setSearchText] = useState('');
-  let resList = []
+  const [filteredData, setFilteredData]= useState ([])
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetch(SWIGGY_API);
-        const jsonData = await data.json();
-        console.log('jsonData', jsonData);
-        console.log('data', jsonData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-        
-        setRestaurant(jsonData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants)
-        resList = restaurant
-
-      } catch (error) {
-        console.log('error while fetching:-', error)
-      }
-
-    }
-    fetchData();
+    fetchData().then(res => {
+      setRestaurant(res)
+      setFilteredData(res)
+    })
   }, [])
 
-  return restaurant.length === 0 ? <Shimmer /> : (
+  return restaurant?.length === 0 ? <Shimmer /> : (
     <div className='body'>
       <div className='filter'>
         <div className='search'>
@@ -40,22 +29,22 @@ const Body = () => {
           <button
             onClick={() => {
               console.log('searchText', searchText)
-              const filteredList = resList.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
-              console.log('filteredList', filteredList)
-              setRestaurant(filteredList);
+              setFilteredData(restaurant.filter(res => 
+                 res?.info.name.toLowerCase().includes(searchText.toLowerCase())
+              ))
             }}>Search</button>
         </div>
         <button className="filter-btn" onClick={() => {
           const filteredList = restaurant.filter(
-            (res) => res.data.avgRating > 4
+            (res) => res?.info.avgRating > 4
           );
-          setRestaurant(filteredList);
+          setFilteredData(filteredList);
         }}
         >Top Rated Restaurant</button>
       </div>
       <div className='res-container'>
-        {restaurant && restaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant?.info} />
+        {filteredData && filteredData.map((res) => (
+          <Link to={'/restaurants/'+res?.info.id} key={res?.info.id}><RestaurantCard resData={res?.info} /></Link>
         ))}
       </div>
 

@@ -50,3 +50,8 @@
 - it is because we are using swiggy api which is of diffenrent domain
 - to solve this you can do const data = await fetch(CORSS_PROXY+SWIGGY_API); in body comoponent
 - or you can install cors pligin and turn on cors that will work.
+
+Two types of Routing in web apps
+- Client side routing
+- Server side routing
+- If we make any network call to route then we call that routing as server side routing.
