@@ -1,56 +1,87 @@
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
 }
 
-.logo{
+.logo {
   width: 100px;
 }
 
-.nav{
+.logo-container {
+  padding: 5px;
+}
+
+.nav {
   padding: 0px 10px;
 }
 
-.nav > ul{
+.nav>ul {
   display: flex;
   /* font-size: 24px; */
   list-style-type: none;
 }
 
-.nav > ul > li {
+.nav>ul>li {
   margin: 10px;
   padding: 10px;
 }
 
-.res-container{
+.res-container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.res-card{
+.res-card {
   margin: 5px;
   width: 200px;
 
   padding: 5px;
   background-color: #f0f0f0;
 }
-.res-card:hover{
-    border: 1px solid black;
-    cursor: pointer;
+
+.res-card:hover {
+  border: 1px solid black;
+  cursor: pointer;
 }
 
-.search{
+.search {
   padding: 10px;
 }
 
-.res-img{
+.res-logo {
   padding: 5px;
   width: 190px;
   height: 100px;
 }
 
-.filter-btn{
+.filter-btn {
   padding: 5px;
   cursor: pointer;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 20px;
+  width: 200px;
+  height: 350px;
+  border: 1px solid black;
+  background: '#f0f0f0';
+}
+
+.login{
+  padding: 0px 20px;
+  cursor: pointer;
+}
+
+.filter{
+  display: flex;
+}
+
+.search-box{
+
 }

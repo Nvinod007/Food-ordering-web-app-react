@@ -38,3 +38,15 @@
 -  * - Links
 -  * - Address
 -  * - Contact
+
+# React Hooks
+- Normal Js utility functions
+- useState()
+- useEffect() 
+
+
+# Cors Error
+- you will face cors error while running in your local
+- it is because we are using swiggy api which is of diffenrent domain
+- to solve this you can do const data = await fetch(CORSS_PROXY+SWIGGY_API); in body comoponent
+- or you can install cors pligin and turn on cors that will work.
