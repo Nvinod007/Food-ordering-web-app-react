@@ -1,6 +1,6 @@
 # ReactExploration
 
-# I am using parcel here, inplace i can use vite or webpack
+# I am using Parcel here, in place i can use Vite or webpack
 # parcel
 - Dev Build
 - Local Server
@@ -13,14 +13,14 @@
 - Compressing
 - Code splitting
 - Differential Bundling - Support old browsers
-- Diagnostis - Error view, metrics
+- Diagnostics - Error view, metrics
 - Error Handling
-- HTTPs
-- Tree Shaking - remmoves unused code
+- HTTPS
+- Tree Shaking - removes unused code
 - Different dev and prod builds
 
-# This will work in last 2 version of any browser.
-- inorder to change and make different configuration, make changes in **browserslist** in ""package.json""
+# This will work in the last 2 versions of any browser.
+- to change and make different configurations, make changes in **browsers list** in "package.json"
 
 # Food ordering APP
 
@@ -34,7 +34,7 @@
 -  *   - IMG
 -  *   - Name of res, star rating, cuisine
 -  * Footer
--  * - Copy right
+-  * - Copyright
 -  * - Links
 -  * - Address
 -  * - Contact
@@ -46,12 +46,12 @@
 
 
 # Cors Error
-- you will face cors error while running in your local
-- it is because we are using swiggy api which is of diffenrent domain
-- to solve this you can do const data = await fetch(CORSS_PROXY+SWIGGY_API); in body comoponent
-- or you can install cors pligin and turn on cors that will work.
+- you will face a Cors error while running in your local
+- it is because we are using swiggy API which is of a different domain
+- to solve this you can do const data = await fetch(CORSS_PROXY+SWIGGY_API); in body component
+- or you can install the Cors plugin and turn on Cors that will work.
 
-Two types of Routing in web apps
-- Client side routing
-- Server side routing
+**Two types of Routing in web apps**
+- Client-side routing
+- Server-side routing
 - If we make any network call to route then we call that routing as server side routing.
