@@ -4,21 +4,27 @@ import Shimmer from './shimmer';
 import { SWIGGY_API } from '../utils/constants';
 import { fetchData } from '../utils/dataFetch';
 import { Link } from 'react-router-dom';
+import useRestaurantsData from '../hooks/useRestaurantsData';
+import useInternetStatus from '../hooks/useInternetStatus';
 
 const Body = () => {
 
   const [restaurant, setRestaurant] = useState([]);
   const [searchText, setSearchText] = useState('');
-  const [filteredData, setFilteredData]= useState ([])
+  const [filteredData, setFilteredData] = useState([])
+  const internetStatus = useInternetStatus();
+  const restaurantData = useRestaurantsData();
 
-  useEffect(() => {
-    fetchData().then(res => {
-      setRestaurant(res)
-      setFilteredData(res)
-    })
-  }, [])
+  restaurantData.then(resList => {
+    setRestaurant(resList);
+    setFilteredData(resList);
+  })
 
-  return restaurant?.length === 0 ? <Shimmer /> : (
+  if (!internetStatus) {
+    return <h1>Looks like you are offline, check you connection!</h1>
+  }
+
+  return !restaurant?.length ? <Shimmer /> : (
     <div className='body'>
       <div className='filter'>
         <div className='search'>

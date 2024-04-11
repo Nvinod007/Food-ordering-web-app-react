@@ -1,10 +1,12 @@
 import { LOGO_URL } from "../utils/constants"
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import useInternetStatus from "../hooks/useInternetStatus";
 
 const Header = () => {
   // let btnName = 'Log in';
   const [btnName, setBtnName] = useState(true)
+  const internetStatus = useInternetStatus();
 
   /**
    * ? we should use<a> tag in react like:
@@ -19,7 +21,9 @@ const Header = () => {
       </div>
       < div className='nav' >
         <ul>
+          <li>Online Status: {internetStatus ? '✅': '🔴'}</li>
           <li><Link to='/'>Home</Link></li>
+          <li> <Link to='/grocery'>Grocery</Link></li>
           <li> <Link to='/about'>About Us</Link></li>
           <li> <Link to='/contact'>Contact Us</Link></li>
           <li> Cart </li>
