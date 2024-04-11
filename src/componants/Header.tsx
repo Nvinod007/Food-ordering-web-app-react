@@ -20,17 +20,17 @@ const Header = () => {
       sm:bg-pink-100
       lg:bg-green-100' >
       <div className='logo-container' >
-        <img className='w-24' src={LOGO_URL} />
+        <img className='w-28 m-4' src={LOGO_URL} />
       </div>
       < div className='flex items-center' >
-        <ul className='flex p-4 m-4'>
-          <li className="px-4">Online Status: {internetStatus ? '✅': '🔴'}</li>
-          <li className="px-4"><Link to='/'>Home</Link></li>
-          <li className="px-4"> <Link to='/grocery'>Grocery</Link></li>
-          <li className="px-4"> <Link to='/about'>About Us</Link></li>
-          <li className="px-4"> <Link to='/contact'>Contact Us</Link></li>
-          <li className="px-4"> Cart </li>
-          <button className='px-4' onClick={() => { setBtnName(!btnName); console.log('btnName', btnName)}}>{btnName?'Log In':'Log Out'}</button>
+        <ul className='flex p-4 m-4 bg-yellow-100 rounded-lg'>
+          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg">Online Status: {internetStatus ? '✅': '🔴'}</li>
+          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"><Link to='/'>Home</Link></li>
+          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/grocery'>Grocery</Link></li>
+          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/about'>About Us</Link></li>
+          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/contact'>Contact Us</Link></li>
+          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> Cart </li>
+          <button className='p-4 mx-4 bg-gray-200 p4 m4 hover:bg-blue-200 rounded-lg' onClick={() => { setBtnName(!btnName); console.log('btnName', btnName)}}>{btnName?'Log In':'Log Out'}</button>
         </ul>
       </div>
     </div>
