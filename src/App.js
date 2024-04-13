@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './componants/Header';
 import Body from './componants/Body';
@@ -7,6 +7,7 @@ import About from './componants/About';
 import Contact from './componants/Contact';
 import Error from './componants/Error'
 import RestaurantMenu from './componants/RestaurantMenu'
+import UserContext from './utils/userContext';
 // import Grocery from './componants/Grocery'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -21,13 +22,25 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 const Grocery = lazy(() => import('./componants/Grocery'))
 
 const AppComponant = () => {
-  return (
-    <div className='app'>
-      <Header />
-      {/* Outlet component  */}
-      <Outlet />
 
-    </div>
+  const [userName, setUserName] = useState('');
+  //authentication
+  useEffect(() => {
+    // Make an API call and send username and password
+    const data = {
+      name: "vinod kumar",
+    };
+    setUserName(data.name);
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className='app'>
+        <Header />
+        {/* Outlet component  */}
+        <Outlet />
+      </div >
+    </UserContext.Provider>
   )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import User from './User'
 import UserClass from './UserClass'
+import UserContext from '../utils/userContext'
 
-class About extends React.Component{
+class About extends React.Component {
   constructor(props) {
     super(props)
     // console.log('parent constructor');
@@ -19,6 +20,11 @@ class About extends React.Component{
       <div>About
         <h1>This is about app</h1>
         <h2>don't you know about this?</h2>
+        <div>Logged In User:-
+          <UserContext.Consumer>
+            {(data) => <span className='font-bold'>{data.loggedInUser}</span> }
+          </UserContext.Consumer>
+        </div>
         <UserClass
           name={'vinod kumar'}
           componentType={'Class'} />

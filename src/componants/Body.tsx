@@ -1,10 +1,11 @@
 import RestaurantCard from './RestaurantCard';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useRestaurantsData from '../hooks/useRestaurantsData';
 import useInternetStatus from '../hooks/useInternetStatus';
 import { WithPromtedLabel } from '../higherOrderComponents/withPromotedLabel';
+import UserContext from '../utils/userContext';
 
 const Body = () => {
 
@@ -22,6 +23,7 @@ const Body = () => {
   },[])
   const RestaurantCardPromoted = WithPromtedLabel(RestaurantCard);
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
 
   const fetchData = async() => {
@@ -65,6 +67,16 @@ const Body = () => {
             className="px-2 py-2 bg-gray-50 rounded-lg hover:bg-gray-200"
             onClick={handleTopRated}
           >Top Rated Restaurant</button>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName:- </label>
+          <input
+            className="border border-black ml-2 px-2"
+            value={loggedInUser}
+            onChange={(e) => {
+              typeof setUserName === 'function' && setUserName(e.target.value)
+            }}
+          />
         </div>
       </div>
       <div className='flex flex-wrap'>
