@@ -55,3 +55,11 @@
 - Client-side routing
 - Server-side routing
 - If we make any network call to route then we call that routing as server side routing.
+
+ # Redux Toolkit
+  - Install @reduxjs/toolkit and react-redux
+  - Build our store
+  - Connect our store to our app
+  - Slice (cartSlice)
+  - dispatch(action)
+  - Selector
