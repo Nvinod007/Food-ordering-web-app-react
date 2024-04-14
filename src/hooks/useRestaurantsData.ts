@@ -4,9 +4,9 @@ const useRestaurantsData = () => {
   return new Promise((resolve, reject) => {
     fetch(SWIGGY_API)
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
+        // if (!response.ok) {
+        //   throw new Error('Failed to fetch data');
+        // }
         return response.json();
       })
       .then(jsonData => {

@@ -24,17 +24,6 @@ const Body = () => {
   const RestaurantCardPromoted = WithPromtedLabel(RestaurantCard);
 
   const { loggedInUser, setUserName } = useContext(UserContext);
-
-
-  const fetchData = async() => {
-    const d = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4485835&lng=78.39080349999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-    console.log('d', d)
-    const j = d.json()
-    console.log('j', j)
-  }
-  useEffect(() => {
-    fetchData()
-  }, [])
   
   const handleSearch = () => {
     setFilteredData(restaurant.filter(res => res?.info.name.toLowerCase().includes(searchText.toLowerCase())));
@@ -57,6 +46,7 @@ const Body = () => {
             value={searchText}
             onChange={(value) => { setSearchText(value.target.value) }} />
           <button
+            data-testid= "searchInput"
             className='px-2 py-2 bg-green-50 ml-2 hover:bg-green-200 rounded-lg'
             onClick={handleSearch}>
             Search

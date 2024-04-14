@@ -36,7 +36,9 @@ const Header = () => {
           <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/about'>About Us</Link></li>
           <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/contact'>Contact Us</Link></li>
           <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/cart'>Cart {cart.length}</Link></li>
-          <button className='p-4 mx-4 bg-gray-200 p4 m4 hover:bg-blue-200 rounded-lg' onClick={() => { setBtnName(!btnName); console.log('btnName', btnName) }}>{btnName ? 'Log In' : 'Log Out'}</button>
+          <button className='p-4 mx-4 bg-gray-200 p4 m4 hover:bg-blue-200 rounded-lg' onClick={() => { setBtnName(!btnName) }}>
+            {btnName ? 'Log In' : 'Log Out'}
+          </button>
           <li className="px-4 font-bold">{loggedInUser}</li>
         </ul>
       </div>

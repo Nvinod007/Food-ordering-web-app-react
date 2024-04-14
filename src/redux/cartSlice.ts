@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";   
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -13,16 +13,16 @@ const cartSlice = createSlice({
       state.items.pop()
     },
     clearCart: (state) => {
-      // state.items = []
+      state.items = []
       // * Below code don't work have to read about immer
       // * we should mutate the state 
       // * assigning something to state wont work as expected
-      console.log('state', current(state));
-      state = []
-      console.log('state', state);
+      // console.log('state', current(state));
+      // state = []
+      // console.log('state', state);
     }
   }
 })
 
-export const { addItem, removeItem, clearCart} = cartSlice.actions;
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
