@@ -38,8 +38,6 @@ const ItemList = ({ items }) => {
               </button>
             </div>
           </div>
-
-          
         </div>
       ))}
     </div>

@@ -1,5 +1,5 @@
 import RestaurantCard from './RestaurantCard';
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useRestaurantsData from '../hooks/useRestaurantsData';
@@ -15,16 +15,16 @@ const Body = () => {
   const internetStatus = useInternetStatus();
 
   useEffect(() => {
-  const restaurantData = useRestaurantsData();
+    const restaurantData = useRestaurantsData();
     restaurantData.then(resList => {
       setRestaurant(resList);
       setFilteredData(resList);
     })
-  },[])
-  const RestaurantCardPromoted = WithPromtedLabel(RestaurantCard);
+  }, [])
 
+  const RestaurantCardPromoted = WithPromtedLabel(RestaurantCard);
   const { loggedInUser, setUserName } = useContext(UserContext);
-  
+
   const handleSearch = () => {
     setFilteredData(restaurant.filter(res => res?.info.name.toLowerCase().includes(searchText.toLowerCase())));
   };
@@ -38,30 +38,31 @@ const Body = () => {
   }
 
   return !restaurant?.length ? <Shimmer /> : (
-    <div className='body'>
-      <div className='flex items-center'>
-        <div className='m-4 p-4'>
+    <div className='container mx-auto px-4'>
+      <div className='flex flex-col md:flex-row justify-between items-center py-4 space-y-4 md:space-y-0 md:space-x-4'>
+        <div className='flex-grow flex flex-col md:flex-row items-center'>
           <input type='text'
-            className='border border-solid border-black p-1 pl-2 hover:border-separate'
+            className='form-input border border-gray-800 p-2 w-full md:w-auto rounded-lg'
+            placeholder='Search restaurants...'
             value={searchText}
             onChange={(value) => { setSearchText(value.target.value) }} />
           <button
-            data-testid= "searchInput"
-            className='px-2 py-2 bg-green-50 ml-2 hover:bg-green-200 rounded-lg'
+            data-testid="searchInput"
+            className='btn bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg mt-2 md:mt-0 md:ml-4'
             onClick={handleSearch}>
             Search
           </button>
         </div>
-        <div className='m-4 p-4'>
+        <div className='mt-4 md:mt-0'>
           <button
-            className="px-2 py-2 bg-gray-50 rounded-lg hover:bg-gray-200"
+            className="btn bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded-lg"
             onClick={handleTopRated}
           >Top Rated Restaurant</button>
         </div>
-        <div className="search m-4 p-4 flex items-center">
+        <div className="flex items-center space-x-2 py-2 mt-4 md:mt-0">
           <label>UserName:- </label>
           <input
-            className="border border-black ml-2 px-2"
+            className="form-input border border-gray-800 p-2 rounded-lg"
             value={loggedInUser}
             onChange={(e) => {
               typeof setUserName === 'function' && setUserName(e.target.value)
@@ -69,16 +70,14 @@ const Body = () => {
           />
         </div>
       </div>
-      <div className='flex flex-wrap'>
-        {filteredData && filteredData.map((res) => (
-          <Link to={'/restaurants/' + res?.info.id} key={res?.info.id}>
-            {res.info.avgRating>4 ? (
-              <RestaurantCardPromoted resData={res.info} />
-            ) : (
-                <RestaurantCard resData={res.info} />
-            )}
-          </Link>
-        ))}
+      <div className='flex flex-wrap -mx-2'>
+        {filteredData && filteredData.map((res) => {
+          return res.info.avgRating > 4 ?
+            <RestaurantCardPromoted resData={res.info} key={res.info.id} />
+            :
+            <RestaurantCard resData={res.info} key={res.info.id} />
+        }
+        )}
       </div>
 
     </div>

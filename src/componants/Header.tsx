@@ -9,9 +9,7 @@ const Header = () => {
   // let btnName = 'Log in';
   const [btnName, setBtnName] = useState(true)
   const internetStatus = useInternetStatus();
-
   const { loggedInUser } = useContext(UserContext);
-
   const cart = useSelector((store) => store?.cart?.items);
 
   /**
@@ -21,25 +19,25 @@ const Header = () => {
    */
 
   return (
-    <div className='flex justify-between shadow-lg
+    <div className='flex justify-evenly shadow-lg p-4 py-2
       bg-yellow-100
       sm:bg-pink-100
       lg:bg-green-100' >
-      <div className='logo-container' >
-        <img className='w-28 m-4' src={LOGO_URL} />
+      <div className='logo-container'  >
+        <img className='w-28 ' src={LOGO_URL} alt="Company Logo" />
       </div>
-      < div className='flex items-center' >
-        <ul className='flex p-4 m-4 bg-yellow-100 rounded-lg'>
-          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg">Online Status: {internetStatus ? '✅': '🔴'}</li>
-          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"><Link to='/'>Home</Link></li>
-          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/grocery'>Grocery</Link></li>
-          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/about'>About Us</Link></li>
-          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/contact'>Contact Us</Link></li>
-          <li className="p-4 mx-4 hover:bg-blue-200 rounded-lg"> <Link to='/cart'>Cart {cart.length}</Link></li>
-          <button className='p-4 mx-4 bg-gray-200 p4 m4 hover:bg-blue-200 rounded-lg' onClick={() => { setBtnName(!btnName) }}>
+      < div className='flex-grow self-center' >
+        <ul className='flex justify-end items-center flex-wrap'>
+          <li className="mx-2 my-1 p-2 hover:bg-blue-200 rounded-lg">Online Status: {internetStatus ? '✅': '🔴'}</li>
+          <li className="mx-2 my-1 p-2 hover:bg-blue-200 rounded-lg"><Link to='/'>Home</Link></li>
+          <li className="mx-2 my-1 p-2 hover:bg-blue-200 rounded-lg"> <Link to='/grocery'>Grocery</Link></li>
+          <li className="mx-2 my-1 p-2 hover:bg-blue-200 rounded-lg"> <Link to='/about'>About Us</Link></li>
+          <li className="mx-2 my-1 p-2 hover:bg-blue-200 rounded-lg"> <Link to='/contact'>Contact Us</Link></li>
+          <li className="mx-2 my-1 p-2 hover:bg-blue-200 rounded-lg"> <Link to='/cart'>Cart {cart.length}</Link></li>
+          <button className='mx-2 my-1 p-2 bg-gray-200 hover:bg-blue-200 rounded-lg' onClick={() => { setBtnName(!btnName) }}>
             {btnName ? 'Log In' : 'Log Out'}
           </button>
-          <li className="px-4 font-bold">{loggedInUser}</li>
+          <li className="mx-2 my-1 p-2 font-bold">{loggedInUser}</li>
         </ul>
       </div>
     </div>
