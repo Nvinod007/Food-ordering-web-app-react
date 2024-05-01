@@ -31,7 +31,7 @@ const ShimmerItemList = () => {
           className="p-2 m-2 mt-32 border-gray-200  text-center flex justify-center"
         >
         <div className="w-7/12  ">
-          {'vinod'.split('').map(() => <div className="shimmer h-16 rounded-md mb-3"></div>)}
+          {'vinod'.split('').map(() => <div className="shimmer h-14 rounded-md mb-3"></div>)}
           </div>
         </div>
     </div>
